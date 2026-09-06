@@ -9,7 +9,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 // Đăng ký Service vào DI Container
-builder.Services.AddScoped<IBookService, BookService>();
+builder.Services.AddSingleton<IEmployeeService, EmployeeService>();
 
 var app = builder.Build();
 

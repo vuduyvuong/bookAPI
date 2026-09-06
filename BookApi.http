@@ -1,6 +1,28 @@
 @BookApi_HostAddress = http://localhost:5294
 
-GET {{BookApi_HostAddress}}/weatherforecast/
+GET {{BookApi_HostAddress}}/api/employees
 Accept: application/json
 
 ###
+
+GET {{BookApi_HostAddress}}/api/employees/1
+Accept: application/json
+
+###
+
+POST {{BookApi_HostAddress}}/api/employees
+Content-Type: application/json
+
+{
+  "employeeCode": "UDA-002",
+  "fullName": "Trần Thị Bình",
+  "dateOfBirth": "1995-08-20T00:00:00",
+  "gender": 2,
+  "identityCardNumber": "001095000002",
+  "email": "binh.tran@donga.edu.vn",
+  "phoneNumber": "0900000002",
+  "hireDate": "2024-09-01T00:00:00",
+  "degree": 2,
+  "departmentId": 1,
+  "positionId": 1
+}
