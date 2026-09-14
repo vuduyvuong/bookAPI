@@ -2,14 +2,18 @@ using System.ComponentModel.DataAnnotations;
 
 namespace BookApi.Models;
 
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
 public class SalaryRecord
 {
+    [Key]
+    [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     public int Id { get; set; }
 
     [Range(1, int.MaxValue, ErrorMessage = "Mã nhân viên không hợp lệ")]
     public int EmployeeId { get; set; }
     public Employee? Employee { get; set; }
-
     [Range(1, 12, ErrorMessage = "Tháng phải từ 1 đến 12")]
     public int Month { get; set; }
 
@@ -56,5 +60,6 @@ public class SalaryRecord
     public DateTime? PaymentDate { get; set; }
 
     [StringLength(500, ErrorMessage = "Ghi chú không được vượt quá 500 ký tự")]
+
     public string? Note { get; set; }
 }

@@ -1,3 +1,5 @@
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 namespace BookApi.Models;
 
 using System.ComponentModel.DataAnnotations;
@@ -29,6 +31,7 @@ public class User
     public bool IsActive { get; set; } = true;
 
     [Required(ErrorMessage = "Ngày tạo là bắt buộc")]
+
     public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
 
     // 1-1 Relationship with Employee

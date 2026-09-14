@@ -14,11 +14,9 @@ builder.Services.AddSingleton<IEmployeeService, EmployeeService>();
 var app = builder.Build();
 
 // 2. Cấu hình Middleware Pipeline
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+// Bật Swagger cho mục đích test (sẵn sàng ở tất cả môi trường)
+app.UseSwagger();
+app.UseSwaggerUI();
 
 app.UseHttpsRedirection();
 app.UseAuthorization();

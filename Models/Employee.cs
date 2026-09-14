@@ -1,10 +1,13 @@
 using System.ComponentModel.DataAnnotations;
 using BookApi.Models.Enums;
-
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 namespace BookApi.Models;
 
 public class Employee
 {
+    [Key]
+    [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     public int Id { get; set; }
 
     [Required(ErrorMessage = "Mã nhân viên là bắt buộc")]
@@ -47,6 +50,7 @@ public class Employee
 
     [StringLength(100, ErrorMessage = "Chuyên ngành không được vượt quá 100 ký tự")]
     public string? AcademicSpecialization { get; set; } // Chuyên ngành: Công nghệ phần mềm, Trí tuệ nhân tạo...
+
 
     // Trạng thái nhân sự
     [EnumDataType(typeof(EmployeeStatus), ErrorMessage = "Trạng thái nhân sự không hợp lệ")]

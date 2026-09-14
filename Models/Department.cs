@@ -2,9 +2,14 @@ using System.ComponentModel.DataAnnotations;
 
 namespace BookApi.Models;
 
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 public class Department
 {
+    [Key]
+    [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     public int Id { get; set; }
+
 
     [Required(ErrorMessage = "Mã khoa/phòng ban là bắt buộc")]
     [StringLength(20, MinimumLength = 2, ErrorMessage = "Mã khoa/phòng ban phải từ 2 đến 20 ký tự")]
@@ -26,6 +31,7 @@ public class Department
     public string? Email { get; set; }
 
     [StringLength(200, ErrorMessage = "Vị trí làm việc không được vượt quá 200 ký tự")]
+
     public string? OfficeLocation { get; set; } // Ví dụ: Phòng 302 - Khu A, ĐH Đông Á
 
     // Navigation properties

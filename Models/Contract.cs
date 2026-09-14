@@ -1,10 +1,14 @@
 using System.ComponentModel.DataAnnotations;
 using BookApi.Models.Enums;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace BookApi.Models;
 
 public class Contract
 {
+    [Key]
+    [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     public int Id { get; set; }
 
     [Required(ErrorMessage = "Số hợp đồng là bắt buộc")]
@@ -12,6 +16,7 @@ public class Contract
     public string ContractNumber { get; set; } = string.Empty; // Số HĐ: HĐLD-UDA/2026/001
 
     [Range(1, int.MaxValue, ErrorMessage = "Mã nhân viên không hợp lệ")]
+
     public int EmployeeId { get; set; }
     public Employee? Employee { get; set; }
 

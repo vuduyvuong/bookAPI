@@ -1,11 +1,16 @@
 using System.ComponentModel.DataAnnotations;
 using BookApi.Models.Enums;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace BookApi.Models;
 
 public class LeaveRequest
 {
+    [Key]
+    [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     public int Id { get; set; }
+
 
     [Range(1, int.MaxValue, ErrorMessage = "Mã nhân viên không hợp lệ")]
     public int EmployeeId { get; set; }
@@ -13,6 +18,7 @@ public class LeaveRequest
 
     [Required(ErrorMessage = "Loại nghỉ phép là bắt buộc")]
     [StringLength(50, MinimumLength = 2, ErrorMessage = "Loại nghỉ phép phải từ 2 đến 50 ký tự")]
+
     public string LeaveType { get; set; } = string.Empty; // Nghỉ phép năm, Thai sản, Nghỉ ốm, Đi công tác/Hội thảo
 
     [Required(ErrorMessage = "Ngày bắt đầu nghỉ là bắt buộc")]
@@ -20,6 +26,7 @@ public class LeaveRequest
 
     [Required(ErrorMessage = "Ngày kết thúc nghỉ là bắt buộc")]
     public DateTime EndDate { get; set; }
+
 
     [Required(ErrorMessage = "Lý do nghỉ là bắt buộc")]
     [StringLength(1000, MinimumLength = 5, ErrorMessage = "Lý do nghỉ phải từ 5 đến 1000 ký tự")]
@@ -34,5 +41,6 @@ public class LeaveRequest
     public DateTime? ApprovedAt { get; set; }
 
     [StringLength(500, ErrorMessage = "Nhận xét không được vượt quá 500 ký tự")]
+
     public string? ApproverComment { get; set; }
 }

@@ -7,8 +7,8 @@ namespace BookApi.Services;
 // Kho dữ liệu tạm phục vụ demo. Có thể thay bằng repository/EF Core sau này.
 public class EmployeeService : IEmployeeService
 {
-    private readonly List<EmployeeDto> _employees =
-    [
+    private readonly List<EmployeeDto> _employees = new()
+    {
         new EmployeeDto
         {
             Id = 1, EmployeeCode = "UDA-001", FullName = "Nguyễn Văn An",
@@ -59,7 +59,7 @@ public class EmployeeService : IEmployeeService
             DepartmentId = 3, DepartmentName = "Phòng Đào tạo",
             PositionId = 4, PositionTitle = "Phó trưởng phòng"
         }
-    ];
+    };
 
     public IReadOnlyList<EmployeeDto> GetAll() => _employees.AsReadOnly();
     public EmployeeDto? GetById(int id) => _employees.FirstOrDefault(x => x.Id == id);
@@ -69,13 +69,20 @@ public class EmployeeService : IEmployeeService
         var employee = new EmployeeDto
         {
             Id = _employees.Count == 0 ? 1 : _employees.Max(x => x.Id) + 1,
-            EmployeeCode = request.EmployeeCode.Trim(), FullName = request.FullName.Trim(),
-            DateOfBirth = request.DateOfBirth, Gender = request.Gender,
-            IdentityCardNumber = request.IdentityCardNumber.Trim(), Email = request.Email.Trim(),
-            PhoneNumber = request.PhoneNumber.Trim(), Address = request.Address?.Trim(),
-            HireDate = request.HireDate, Degree = request.Degree,
+            EmployeeCode = request.EmployeeCode.Trim(),
+            FullName = request.FullName.Trim(),
+            DateOfBirth = request.DateOfBirth,
+            Gender = request.Gender,
+            IdentityCardNumber = request.IdentityCardNumber.Trim(),
+            Email = request.Email.Trim(),
+            PhoneNumber = request.PhoneNumber.Trim(),
+            Address = request.Address?.Trim(),
+            HireDate = request.HireDate,
+            Degree = request.Degree,
             AcademicSpecialization = request.AcademicSpecialization?.Trim(),
-            Status = EmployeeStatus.Active, DepartmentId = request.DepartmentId, PositionId = request.PositionId
+            Status = EmployeeStatus.Active,
+            DepartmentId = request.DepartmentId,
+            PositionId = request.PositionId
         };
         _employees.Add(employee);
         return employee;
