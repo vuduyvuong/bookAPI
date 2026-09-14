@@ -1,4 +1,5 @@
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using BookApi.Models.Enums;
 
 namespace BookApi.DTOs.Employee;
